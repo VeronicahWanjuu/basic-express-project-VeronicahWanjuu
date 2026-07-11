@@ -16,6 +16,16 @@ app.get('/contact', (req, res) => {
   res.send('Contact us at: hello@example.com');
 });
 
+const users = [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Bob' },
+  { id: 3, name: 'Charlie' }
+];
+
+app.get('/users', (req, res) => {
+  res.json(users);
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
