@@ -49,6 +49,27 @@ app.post('/users', (req, res) => {
   });
 });
 
+let courses = [
+  { id: 1, title: 'Intro to Python' },
+  { id: 2, title: 'Advanced Backend Development' }
+];
+
+app.get('/courses', (req, res) => {
+  res.json(courses);
+});
+
+app.get('/courses/:id', (req, res) => {
+  const course = courses.find(c => c.id === parseInt(req.params.id));
+  if (!course) return res.status(404).json({ message: 'Course not found' });
+  res.json(course);
+});
+
+app.post('/courses', (req, res) => {
+  const newCourse = { id: courses.length + 1, title: req.body.title };
+  courses.push(newCourse);
+  res.json({ message: 'Course added', data: newCourse });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
