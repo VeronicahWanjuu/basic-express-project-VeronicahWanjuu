@@ -31,6 +31,11 @@ app.get('/users/:id', (req, res) => {
   res.send(`You requested user with ID: ${userId}`);
 });
 
+app.get('/search', (req, res) => {
+  const name = req.query.name || 'no name provided';
+  res.send(`Search result for: ${name}`);
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
