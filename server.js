@@ -36,6 +36,14 @@ app.get('/search', (req, res) => {
   res.send(`Search result for: ${name}`);
 });
 
+app.post('/users', (req, res) => {
+  const newUser = req.body;
+  res.json({
+    message: 'User received successfully',
+    data: newUser
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
