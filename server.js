@@ -26,6 +26,11 @@ app.get('/users', (req, res) => {
   res.json(users);
 });
 
+app.get('/users/:id', (req, res) => {
+  const userId = req.params.id;
+  res.send(`You requested user with ID: ${userId}`);
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
